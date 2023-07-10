@@ -4,3 +4,11 @@
 
 1.a SELECT nome, cognome FROM public."Clienti" WHERE data_nascita = 1982
 
+2 INSERT INTO public."Fatture"(
+	numero_fattura, tipologia, importo, iva, id_cliente, data_fattura, numero_fornitore)
+	VALUES (5, 'Elettronica', 1500, 22, 6, '18-04-2023', 20);
+
+2.a SELECT numero_fattura FROM public."Fatture" WHERE iva = 20
+
+3 SELECT EXTRACT(year FROM data_fattura) AS data_fattura, COUNT(numero_fattura) AS numero_fattura,
+SUM(importo)  FROM public."Fatture" GROUP BY data_fattura;
