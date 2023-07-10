@@ -1,14 +1,36 @@
-1 INSERT INTO public."Clienti"(
+1 ------------------Estrarre il nome e il cognome dei clienti nati nel 1982
+
+ INSERT INTO public."Clienti"(
 	numero_cliente, nome, cognome, data_nascita, regione_residenza)
 	VALUES (15, 'Mario', 'Nintendo', 1982, 'Roma');
 
 1.a SELECT nome, cognome FROM public."Clienti" WHERE data_nascita = 1982
 
-2 INSERT INTO public."Fatture"(
+2 ------------------Estrarre il numero delle fatture con iva al 20%
+ INSERT INTO public."Fatture"(
 	numero_fattura, tipologia, importo, iva, id_cliente, data_fattura, numero_fornitore)
 	VALUES (5, 'Elettronica', 1500, 22, 6, '18-04-2023', 20);
 
 2.a SELECT numero_fattura FROM public."Fatture" WHERE iva = 20
 
-3 SELECT EXTRACT(year FROM data_fattura) AS data_fattura, COUNT(numero_fattura) AS numero_fattura,
-SUM(importo)  FROM public."Fatture" GROUP BY data_fattura;
+3 ------------------Riportare il numero di fatture e la somma dei relativi importi divisi per anno di fatturazione
+
+	SELECT EXTRACT(year FROM data_fattura) AS data_fattura, COUNT(numero_fattura) AS numero_fattura,
+		SUM(importo)  FROM public."Fatture" GROUP BY data_fattura;
+
+4
+
+5
+
+6 ---------------Estrarre gli anni in cui sono state registrate piü di 2 fatture con tipologia A' 
+
+	SELECT EXTRACT(year FROM data_fattura) FROM public."Fatture" WHERE tipologia = 'elettronica' GROUP BY EXTRACT (YEAR FROM data_fattura)
+		HAVING COUNT (*) < 2;
+
+7
+
+8
+
+9
+
+10
