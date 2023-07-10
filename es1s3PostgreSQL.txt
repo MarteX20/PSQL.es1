@@ -1,0 +1,6 @@
+1 INSERT INTO public."Clienti"(
+	numero_cliente, nome, cognome, data_nascita, regione_residenza)
+	VALUES (15, 'Mario', 'Nintendo', 1982, 'Roma');
+
+1.a SELECT nome, cognome FROM public."Clienti" WHERE data_nascita = 1982
+
