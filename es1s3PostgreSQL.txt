@@ -15,8 +15,10 @@
 
 3 ------------------Riportare il numero di fatture e la somma dei relativi importi divisi per anno di fatturazione
 
-	SELECT EXTRACT(year FROM data_fattura) AS data_fattura, COUNT(numero_fattura) AS numero_fattura,
-		SUM(importo)  FROM public."Fatture" GROUP BY data_fattura;
+	SELECT EXTRACT(YEAR FROM data_fattura) AS anno, COUNT(numero_fattura) AS numero_fatture, SUM(importo) AS somma_importi
+	FROM public."Fatture"
+	GROUP BY EXTRACT(YEAR FROM data_fattura)
+	ORDER BY anno
 
 4
 
