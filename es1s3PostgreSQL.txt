@@ -31,7 +31,12 @@
 
 7
 
-8
+8 -------------Estrarre il totale degli importi delle fatture divisi per residenza dei clienti
+
+	SELECT C.regione_residenza, SUM(F.importo) AS totale_importi
+	ROM public."Fatture" F
+	INNER JOIN public."Clienti" C ON F.id_cliente = C.numero_cliente
+	GROUP BY C.regione_residenza
 
 9
 
